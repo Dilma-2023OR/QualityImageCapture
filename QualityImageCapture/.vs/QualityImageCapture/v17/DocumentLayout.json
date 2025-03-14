@@ -6,16 +6,12 @@
       "AbsoluteMoniker": "D:0:0:{00000000-0000-0000-0000-000000000000}|\u003CSolution\u003E|QualityImageCapture||{04B8AB82-A572-4FEF-95CE-5222444B6B64}|"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{252084F2-DBEC-4E00-919A-410B5477CC32}|QualityImageCapture\\QualityImageCapture.csproj|C:\\Users\\dilao\\OneDrive - kochind.com\\Documents\\QualityImageCapture\\QualityImageCapture\\qualityimagecapture\\config.ini||{3B902123-F8A7-4915-9F01-361F908088D0}",
-      "RelativeMoniker": "D:0:0:{252084F2-DBEC-4E00-919A-410B5477CC32}|QualityImageCapture\\QualityImageCapture.csproj|solutionrelative:qualityimagecapture\\config.ini||{3B902123-F8A7-4915-9F01-361F908088D0}"
+      "AbsoluteMoniker": "D:0:0:{252084F2-DBEC-4E00-919A-410B5477CC32}|QualityImageCapture\\QualityImageCapture.csproj|C:\\Users\\dilao\\OneDrive - kochind.com\\Documents\\QualityImageCapture\\QualityImageCapture\\qualityimagecapture\\frmmain.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{252084F2-DBEC-4E00-919A-410B5477CC32}|QualityImageCapture\\QualityImageCapture.csproj|solutionrelative:qualityimagecapture\\frmmain.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{252084F2-DBEC-4E00-919A-410B5477CC32}|QualityImageCapture\\QualityImageCapture.csproj|C:\\Users\\dilao\\OneDrive - kochind.com\\Documents\\QualityImageCapture\\QualityImageCapture\\qualityimagecapture\\frmmain.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
       "RelativeMoniker": "D:0:0:{252084F2-DBEC-4E00-919A-410B5477CC32}|QualityImageCapture\\QualityImageCapture.csproj|solutionrelative:qualityimagecapture\\frmmain.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{252084F2-DBEC-4E00-919A-410B5477CC32}|QualityImageCapture\\QualityImageCapture.csproj|c:\\users\\dilao\\onedrive - kochind.com\\documents\\qualityimagecapture\\qualityimagecapture\\qualityimagecapture\\frmmain.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{252084F2-DBEC-4E00-919A-410B5477CC32}|QualityImageCapture\\QualityImageCapture.csproj|solutionrelative:qualityimagecapture\\frmmain.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{252084F2-DBEC-4E00-919A-410B5477CC32}|QualityImageCapture\\QualityImageCapture.csproj|c:\\users\\dilao\\onedrive - kochind.com\\documents\\qualityimagecapture\\qualityimagecapture\\qualityimagecapture\\||{B270807C-D8C6-49EB-8EBE-8E8D566637A1}|cc4014f5-b18d-439c-9352-f99d984cca85"
@@ -57,25 +53,12 @@
             {
               "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "config.ini",
-              "DocumentMoniker": "C:\\Users\\dilao\\OneDrive - kochind.com\\Documents\\QualityImageCapture\\QualityImageCapture\\QualityImageCapture\\config.ini",
-              "RelativeDocumentMoniker": "QualityImageCapture\\config.ini",
-              "ToolTip": "C:\\Users\\dilao\\OneDrive - kochind.com\\Documents\\QualityImageCapture\\QualityImageCapture\\QualityImageCapture\\config.ini",
-              "RelativeToolTip": "QualityImageCapture\\config.ini",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAAIAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.002768|",
-              "WhenOpened": "2025-03-13T18:38:08.361Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
               "Title": "FrmMain.cs",
               "DocumentMoniker": "C:\\Users\\dilao\\OneDrive - kochind.com\\Documents\\QualityImageCapture\\QualityImageCapture\\QualityImageCapture\\FrmMain.cs",
               "RelativeDocumentMoniker": "QualityImageCapture\\FrmMain.cs",
               "ToolTip": "C:\\Users\\dilao\\OneDrive - kochind.com\\Documents\\QualityImageCapture\\QualityImageCapture\\QualityImageCapture\\FrmMain.cs",
               "RelativeToolTip": "QualityImageCapture\\FrmMain.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAP4AAAAZAAAAAAAAAA==",
+              "ViewState": "AgIAADsAAAAAAAAAAAAMwHEAAAATAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-03-13T17:58:11.337Z",
               "EditorCaption": ""

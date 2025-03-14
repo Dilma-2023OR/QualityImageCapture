@@ -113,13 +113,19 @@ namespace QualityImageCapture
         {
             using (SaveFileDialog saveFileDialog = new SaveFileDialog())
             {
-                string rutaPredeterminada = @""+link;
+                string rutaPredeterminada = @""+link + EWO + "\\"+opcode;
+
+                if (!Directory.Exists(rutaPredeterminada))
+                { 
+                    Directory.CreateDirectory(rutaPredeterminada);
+                }
+
                 saveFileDialog.InitialDirectory = rutaPredeterminada;
                 //Establecer los filtros del cuadro de dialogo (tipos de imagen que se pueden guardar)
                 saveFileDialog.Filter = "JPEG Image|*.jpg|PNG Image|*.png";
                 saveFileDialog.Title = "Guardar Imagen";
                 saveFileDialog.RestoreDirectory = true;
-                string serial = tbNumSerie.Text + "_" + DateTime.Now.ToString("MMddyyyyHHmmss"); ;
+                string serial = tbNumSerie.Text + "_" + DateTime.Now.ToString("MMddyyyyHHmmss"); 
                 string nombreArchivoFijo = serial + ".jpg";
                 saveFileDialog.FileName = nombreArchivoFijo;
 

@@ -258,7 +258,7 @@
             this.lblVersion.Name = "lblVersion";
             this.lblVersion.Size = new System.Drawing.Size(71, 25);
             this.lblVersion.TabIndex = 35;
-            this.lblVersion.Text = "1.0.0.1";
+            this.lblVersion.Text = "1.0.0.2";
             // 
             // FrmMain
             // 
