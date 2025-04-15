@@ -7,3 +7,7 @@
 13-03-2025 19:40:06[)>06Y7410300000000KP2655356512V811424803T1N25053VG0000098, Serial no registrado en sistema.
 13-03-2025 19:40:30[)>06Y7410300000000KP2655356512V811424803T1N25053VG0000098, Serial no registrado en sistema.
 13-03-2025 19:42:12[)>06Y7410300000000KP2655356512V811424803T1N25053VG0000098, Serial no registrado en sistema.
+15-04-2025 11:45:30,Pase NO otorgado al serial G23465S0002:Input is required
+15-04-2025 12:04:26,Pase NO otorgado al serial G23465S0002:Input is required
+15-04-2025 13:46:09,Pase NO otorgado al serial G23465S0002:Input is required
+15-04-2025 13:46:26,Error al consultar el status del serial :Índice fuera de los límites de la matriz.

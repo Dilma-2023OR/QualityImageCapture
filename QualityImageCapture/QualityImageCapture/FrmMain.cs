@@ -47,7 +47,7 @@ namespace QualityImageCapture
         string partClass = string.Empty;
         string machineId = string.Empty;
         string opcode = string.Empty;
-        string seqnum = string.Empty;
+        int seqnum = 0;
         
         string partnum = string.Empty;
 
@@ -61,8 +61,9 @@ namespace QualityImageCapture
                 if (!Directory.Exists(Path.GetDirectoryName(localConfig.FilePath)))
                 {
                     //Config Directory
+                    string direccion = Directory.GetCurrentDirectory() + "\\config.ini";
                     Directory.CreateDirectory(Path.GetDirectoryName(localConfig.FilePath));
-                    File.Copy(Directory.GetCurrentDirectory() + "\\config.ini", localConfig.FilePath);
+                    File.Copy(direccion, localConfig.FilePath);
                 }
 
                 warehouseBin = localConfig.Read("RUNCARD_INFO", "warehouseBin");
@@ -70,7 +71,6 @@ namespace QualityImageCapture
                 partClass = localConfig.Read("RUNCARD_INFO", "partClass");
                 machineId = localConfig.Read("RUNCARD_INFO", "machineID");
                 opcode = localConfig.Read("RUNCARD_INFO", "opcode");
-                seqnum = localConfig.Read("RUNCARD_INFO", "seqnum");
 
                 link = localConfig.Read("PATH", "imagesPath");
                 //Control Adjust
@@ -78,12 +78,6 @@ namespace QualityImageCapture
 
             }
             catch (Exception ex) { }
-        }
-
-        // Método para seleccionar el botón al abrir Form2
-        public void SelectButton()
-        {
-            btnPass.PerformClick();
         }
 
         private void InitializeCamera()
@@ -105,81 +99,86 @@ namespace QualityImageCapture
             //Almacenar el frame actual
             currentFrame = (Bitmap)eventArgs.Frame.Clone();
 
+            //Solo ajustar tamaño la primera vez para evitar parpadeo constante
+
+            this.Invoke(new Action(() =>
+            {
+                pbImagen.Image = currentFrame;
+
+                if (pbImagen.Width != currentFrame.Width || pbImagen.Height != currentFrame.Height)
+                {
+                    pbImagen.Width = currentFrame.Width;
+                    pbImagen.Height = currentFrame.Height;
+                }
+            }));
             //Mostrar el frame en un PictureBox (si lo tienes en el formulario)
-            pbImagen.Image = currentFrame;
+            //pbImagen.Image = currentFrame;
+        }
+
+        protected override void OnFormClosing(FormClosingEventArgs e)
+        {
+            if (videoSource != null && videoSource.IsRunning) { 
+                videoSource.SignalToStop();
+                videoSource.WaitForStop();
+            }
+            base.OnFormClosing(e);
         }
 
         private void pbCapture_Click(object sender, EventArgs e)
         {
             using (SaveFileDialog saveFileDialog = new SaveFileDialog())
             {
-                string rutaPredeterminada = @""+link + EWO + "\\"+opcode;
-
-                if (!Directory.Exists(rutaPredeterminada))
-                { 
-                    Directory.CreateDirectory(rutaPredeterminada);
-                }
-
-                saveFileDialog.InitialDirectory = rutaPredeterminada;
-                //Establecer los filtros del cuadro de dialogo (tipos de imagen que se pueden guardar)
-                saveFileDialog.Filter = "JPEG Image|*.jpg|PNG Image|*.png";
-                saveFileDialog.Title = "Guardar Imagen";
-                saveFileDialog.RestoreDirectory = true;
-                string serial = tbNumSerie.Text + "_" + DateTime.Now.ToString("MMddyyyyHHmmss"); 
+                string rutaPredeterminada = @"" + link + EWO + "\\" + opcode + "\\" + seqnum;
+                string serial = tbNumSerie.Text + "_" + DateTime.Now.ToString("MMddyyyyHHmmss");
                 string nombreArchivoFijo = serial + ".jpg";
-                saveFileDialog.FileName = nombreArchivoFijo;
 
-                //Deshabilitar la posibilidad de cambiar el nombre del archivo
-                saveFileDialog.DefaultExt = "jpg";
-                saveFileDialog.AddExtension = true;
+                string rutaBase = Path.Combine(rutaPredeterminada, nombreArchivoFijo);
+                string destinationFilePath = rutaBase;
 
-                //Mostrar el cuadro de diálogo
-                if (saveFileDialog.ShowDialog() == DialogResult.OK) {
-                    //Guardar la imagen seleccionada en la ruta indicada
-                    try
+                try
+                {
+                    if (!Directory.Exists(rutaPredeterminada))
                     {
-                        string rutaArchivo = saveFileDialog.FileName;
-
-                        if (CanWriteToDirectory(Path.GetDirectoryName(rutaArchivo)))
-                        {
-                            currentFrame.Save(rutaArchivo, System.Drawing.Imaging.ImageFormat.Jpeg);
-                            Message message = new Message("Foto guardada con éxito");
-                            message.ShowDialog();
-
-                            //detener la cámara web
-                            if (videoSource != null && videoSource.IsRunning)
-                            {
-                                videoSource.SignalToStop();
-                                videoSource.WaitForStop();
-                            }
-
-                            pbImagen.Image = System.Drawing.Image.FromFile(rutaArchivo);
-
-                            btnPass.Enabled = true;
-                            SelectButton();
-                        }
-                        else
-                        {
-                            Message message = new Message("No tienes permisos para guardar en esta carpeta.");
-                            message.ShowDialog();
-                        }
+                        Directory.CreateDirectory(rutaPredeterminada);
                     }
-                    catch (Exception ex)
+
+                    if (CanWriteToDirectory(Path.GetDirectoryName(destinationFilePath)))
                     {
-                        Message message = new Message("Error al cargar la imagen");
+                        currentFrame.Save(destinationFilePath, System.Drawing.Imaging.ImageFormat.Jpeg);
+
+                        ////detener la cámara web
+                        //if (videoSource != null && videoSource.IsRunning)
+                        //{
+                        //    videoSource.SignalToStop();
+                        //    videoSource.WaitForStop();
+                        //}
+
+                        Message message = new Message("Foto guardada con éxito");
                         message.ShowDialog();
 
-                        //Log
-                        File.AppendAllText(Directory.GetCurrentDirectory() + @"\errorLog.txt", DateTime.Now.ToString("dd-MM-yyyy HH:mm:ss") + ",Error al cargar la imagen:" + ex.Message + "\n");
-                    } 
-                }
-            }
-            
-        }
+                        pbImagen.Image = System.Drawing.Image.FromFile(destinationFilePath);
 
-        private void PbPass_Click(object sender, EventArgs e)
-        {
-            throw new NotImplementedException();
+                        btnPass.Enabled = true;
+                        //pass();
+                    }
+                    else
+                    {
+                        Message message = new Message("No tienes permisos para guardar en esta carpeta.");
+                        message.ShowDialog();
+                    }
+                }
+                catch (Exception ex)
+                {
+                    Message message = new Message("Error al cargar la imagen");
+                    message.ShowDialog();
+
+                    //Log
+                    File.AppendAllText(Directory.GetCurrentDirectory() + @"\errorLog.txt", DateTime.Now.ToString("dd-MM-yyyy HH:mm:ss") + ",Error al cargar la imagen:" + ex.Message + "\n");
+
+                }
+
+            }
+
         }
 
         //Función para verificar si se puede escribir en el directorio
@@ -235,6 +234,7 @@ namespace QualityImageCapture
                             EWO = fetchInv[0].workorder;
                             serie = fetchInv[0].serial;
                             opcode1 = fetchInv[0].opcode;
+                            seqnum = fetchInv[0].seqnum;
                         }
                         else
                         {
@@ -253,8 +253,7 @@ namespace QualityImageCapture
                         if (opcode1 == opcode)
                         {
                             tbNumSerie.Enabled = false;
-                            btnCapture.Enabled = true;
-                            btnPass.Enabled = false;
+                            btnPass.Enabled = true;
                             pbImagen.Enabled = false;
                             tbNumSerie.Text = serie;
                             InitializeCamera();
@@ -270,7 +269,6 @@ namespace QualityImageCapture
                     }
                     else
                     {
-                        btnCapture.Enabled = false;
                         btnPass.Enabled = false;
                         tbNumSerie.Clear();
                         tbNumSerie.Focus();
@@ -283,14 +281,14 @@ namespace QualityImageCapture
             }
         }
 
-        private void btnPass_Click(object sender, EventArgs e)
+        public void pass() 
         {
             string scanInfo = "";
 
             foreach (char c in tbNumSerie.Text)
             {
                 if (!char.IsControl(c))
-                { 
+                {
                     scanInfo = scanInfo + c;
                 }
             }
@@ -308,13 +306,25 @@ namespace QualityImageCapture
                 return;
             }
 
+            //detener la cámara web
+            if (videoSource != null && videoSource.IsRunning)
+            {
+                videoSource.SignalToStop();
+                videoSource.WaitForStop();
+            }
+
             //Control Adjust
             tbNumSerie.Enabled = true;
             tbNumSerie.Clear();
             tbNumSerie.Focus();
             pbImagen.Image = null;
-            btnCapture.Enabled = false;
             btnPass.Enabled = false;
+        }
+
+
+        private void btnPass_Click(object sender, EventArgs e)
+        {
+            pass();
         }
 
         private void serialTransaction(string serial, out int response)
@@ -374,18 +384,19 @@ namespace QualityImageCapture
                 try { 
                     //Transaction
                     var transaction = servicio.transactUnit(transItem, inputData, bomData, out msg);
-                
+
                     //MessageBox.Show(msg);
                     if (!msg.Contains("ADVANCE"))
                     {
                         //Feedback
-                        MostrarMensajeFlotanteNoPass("Pase no otorgado al serial "+ serial);
+                        MostrarMensajeFlotanteNoPass("Pase no otorgado al serial " + serial);
 
                         //Log
                         File.AppendAllText(Directory.GetCurrentDirectory() + @"\errorLog.txt", DateTime.Now.ToString("dd-MM-yyyy HH:mm:ss") + ",Pase NO otorgado al serial " + serial + ":" + msg + "\n");
 
                         //Response
                         response = -1;
+
                         return;
                     }
 
@@ -492,6 +503,11 @@ namespace QualityImageCapture
                 timer.Stop();
             };
             timer.Start();
+        }
+
+        private void FrmMain_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Application.Exit();
         }
     }
 }
