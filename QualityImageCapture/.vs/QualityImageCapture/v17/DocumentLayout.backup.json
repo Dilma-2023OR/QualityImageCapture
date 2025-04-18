@@ -3,19 +3,27 @@
   "WorkspaceRootPath": "C:\\Users\\dilao\\OneDrive - kochind.com\\Documents\\QualityImageCapture\\QualityImageCapture\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{00000000-0000-0000-0000-000000000000}|\u003CSolution\u003E|QualityImageCapture||{04B8AB82-A572-4FEF-95CE-5222444B6B64}|"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{252084F2-DBEC-4E00-919A-410B5477CC32}|QualityImageCapture\\QualityImageCapture.csproj|C:\\Users\\dilao\\OneDrive - kochind.com\\Documents\\QualityImageCapture\\QualityImageCapture\\qualityimagecapture\\frmmain.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
       "RelativeMoniker": "D:0:0:{252084F2-DBEC-4E00-919A-410B5477CC32}|QualityImageCapture\\QualityImageCapture.csproj|solutionrelative:qualityimagecapture\\frmmain.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{252084F2-DBEC-4E00-919A-410B5477CC32}|QualityImageCapture\\QualityImageCapture.csproj|c:\\users\\dilao\\onedrive - kochind.com\\documents\\qualityimagecapture\\qualityimagecapture\\qualityimagecapture\\frmmain.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{252084F2-DBEC-4E00-919A-410B5477CC32}|QualityImageCapture\\QualityImageCapture.csproj|C:\\Users\\dilao\\OneDrive - kochind.com\\Documents\\QualityImageCapture\\QualityImageCapture\\qualityimagecapture\\frmmain.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{252084F2-DBEC-4E00-919A-410B5477CC32}|QualityImageCapture\\QualityImageCapture.csproj|solutionrelative:qualityimagecapture\\frmmain.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{252084F2-DBEC-4E00-919A-410B5477CC32}|QualityImageCapture\\QualityImageCapture.csproj|c:\\users\\dilao\\onedrive - kochind.com\\documents\\qualityimagecapture\\qualityimagecapture\\qualityimagecapture\\messagepass.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{252084F2-DBEC-4E00-919A-410B5477CC32}|QualityImageCapture\\QualityImageCapture.csproj|solutionrelative:qualityimagecapture\\messagepass.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{252084F2-DBEC-4E00-919A-410B5477CC32}|QualityImageCapture\\QualityImageCapture.csproj|c:\\users\\dilao\\onedrive - kochind.com\\documents\\qualityimagecapture\\qualityimagecapture\\qualityimagecapture\\messagepass.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{252084F2-DBEC-4E00-919A-410B5477CC32}|QualityImageCapture\\QualityImageCapture.csproj|solutionrelative:qualityimagecapture\\messagepass.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
       "AbsoluteMoniker": "D:0:0:{252084F2-DBEC-4E00-919A-410B5477CC32}|QualityImageCapture\\QualityImageCapture.csproj|C:\\Users\\dilao\\OneDrive - kochind.com\\Documents\\QualityImageCapture\\QualityImageCapture\\qualityimagecapture\\message.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
       "RelativeMoniker": "D:0:0:{252084F2-DBEC-4E00-919A-410B5477CC32}|QualityImageCapture\\QualityImageCapture.csproj|solutionrelative:qualityimagecapture\\message.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{00000000-0000-0000-0000-000000000000}|\u003CSolution\u003E|QualityImageCapture||{04B8AB82-A572-4FEF-95CE-5222444B6B64}|"
     },
     {
       "AbsoluteMoniker": "D:0:0:{252084F2-DBEC-4E00-919A-410B5477CC32}|QualityImageCapture\\QualityImageCapture.csproj|C:\\Users\\dilao\\OneDrive - kochind.com\\Documents\\QualityImageCapture\\QualityImageCapture\\qualityimagecapture\\config.ini||{3B902123-F8A7-4915-9F01-361F908088D0}",
@@ -36,7 +44,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 6,
+          "SelectedChildIndex": 10,
           "Children": [
             {
               "$type": "Bookmark",
@@ -52,7 +60,32 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 2,
+              "Title": "MessagePass.cs",
+              "DocumentMoniker": "C:\\Users\\dilao\\OneDrive - kochind.com\\Documents\\QualityImageCapture\\QualityImageCapture\\QualityImageCapture\\MessagePass.cs",
+              "RelativeDocumentMoniker": "QualityImageCapture\\MessagePass.cs",
+              "ToolTip": "C:\\Users\\dilao\\OneDrive - kochind.com\\Documents\\QualityImageCapture\\QualityImageCapture\\QualityImageCapture\\MessagePass.cs",
+              "RelativeToolTip": "QualityImageCapture\\MessagePass.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-18T13:52:43.123Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "MessagePass.cs [Design]",
+              "DocumentMoniker": "C:\\Users\\dilao\\OneDrive - kochind.com\\Documents\\QualityImageCapture\\QualityImageCapture\\QualityImageCapture\\MessagePass.cs",
+              "RelativeDocumentMoniker": "QualityImageCapture\\MessagePass.cs",
+              "ToolTip": "C:\\Users\\dilao\\OneDrive - kochind.com\\Documents\\QualityImageCapture\\QualityImageCapture\\QualityImageCapture\\MessagePass.cs [Design]",
+              "RelativeToolTip": "QualityImageCapture\\MessagePass.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-18T13:52:40.837Z",
+              "EditorCaption": " [Design]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
               "Title": "Message.cs",
               "DocumentMoniker": "C:\\Users\\dilao\\OneDrive - kochind.com\\Documents\\QualityImageCapture\\QualityImageCapture\\QualityImageCapture\\Message.cs",
               "RelativeDocumentMoniker": "QualityImageCapture\\Message.cs",
@@ -60,22 +93,24 @@
               "RelativeToolTip": "QualityImageCapture\\Message.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAE4AAAAMAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-27T13:57:08.356Z"
+              "WhenOpened": "2025-03-27T13:57:08.356Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 4,
               "Title": "Message.cs [Design]",
               "DocumentMoniker": "C:\\Users\\dilao\\OneDrive - kochind.com\\Documents\\QualityImageCapture\\QualityImageCapture\\QualityImageCapture\\Message.cs",
               "RelativeDocumentMoniker": "QualityImageCapture\\Message.cs",
               "ToolTip": "C:\\Users\\dilao\\OneDrive - kochind.com\\Documents\\QualityImageCapture\\QualityImageCapture\\QualityImageCapture\\Message.cs [Design]",
               "RelativeToolTip": "QualityImageCapture\\Message.cs [Design]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-27T13:57:05.396Z"
+              "WhenOpened": "2025-03-27T13:57:05.396Z",
+              "EditorCaption": " [Design]"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 6,
               "Title": "config.ini",
               "DocumentMoniker": "C:\\Users\\dilao\\OneDrive - kochind.com\\Documents\\QualityImageCapture\\QualityImageCapture\\QualityImageCapture\\config.ini",
               "RelativeDocumentMoniker": "QualityImageCapture\\config.ini",
@@ -87,7 +122,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 5,
               "Title": "QualityImageCapture",
               "DocumentMoniker": "C:\\Users\\dilao\\OneDrive - kochind.com\\Documents\\QualityImageCapture\\QualityImageCapture\\QualityImageCapture\\QualityImageCapture.csproj",
               "RelativeDocumentMoniker": "QualityImageCapture\\QualityImageCapture.csproj",
@@ -99,20 +134,20 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 1,
               "Title": "FrmMain.cs",
               "DocumentMoniker": "C:\\Users\\dilao\\OneDrive - kochind.com\\Documents\\QualityImageCapture\\QualityImageCapture\\QualityImageCapture\\FrmMain.cs",
               "RelativeDocumentMoniker": "QualityImageCapture\\FrmMain.cs",
               "ToolTip": "C:\\Users\\dilao\\OneDrive - kochind.com\\Documents\\QualityImageCapture\\QualityImageCapture\\QualityImageCapture\\FrmMain.cs",
               "RelativeToolTip": "QualityImageCapture\\FrmMain.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAHMAAAAJAAAAAAAAAA==",
+              "ViewState": "AgIAAMEAAAAAAAAAAADwv5IAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-03-13T17:58:11.337Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 0,
               "Title": "FrmMain.cs [Design]",
               "DocumentMoniker": "C:\\Users\\dilao\\OneDrive - kochind.com\\Documents\\QualityImageCapture\\QualityImageCapture\\QualityImageCapture\\FrmMain.cs",
               "RelativeDocumentMoniker": "QualityImageCapture\\FrmMain.cs",

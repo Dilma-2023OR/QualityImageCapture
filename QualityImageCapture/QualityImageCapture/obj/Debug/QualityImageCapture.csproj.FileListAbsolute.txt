@@ -44,3 +44,4 @@ C:\Users\dilao\OneDrive - kochind.com\Documents\QualityImageCapture\QualityImage
 C:\Users\dilao\OneDrive - kochind.com\Documents\QualityImageCapture\QualityImageCapture\QualityImageCapture\bin\Debug\QualityImageCapture.application
 C:\Users\dilao\OneDrive - kochind.com\Documents\QualityImageCapture\QualityImageCapture\QualityImageCapture\obj\Debug\QualityImageCapture.exe.manifest
 C:\Users\dilao\OneDrive - kochind.com\Documents\QualityImageCapture\QualityImageCapture\QualityImageCapture\obj\Debug\QualityImageCapture.application
+C:\Users\dilao\OneDrive - kochind.com\Documents\QualityImageCapture\QualityImageCapture\QualityImageCapture\obj\Debug\QualityImageCapture.MessagePass.resources

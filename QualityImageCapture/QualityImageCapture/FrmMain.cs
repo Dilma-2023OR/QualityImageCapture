@@ -111,8 +111,6 @@ namespace QualityImageCapture
                     pbImagen.Height = currentFrame.Height;
                 }
             }));
-            //Mostrar el frame en un PictureBox (si lo tienes en el formulario)
-            //pbImagen.Image = currentFrame;
         }
 
         protected override void OnFormClosing(FormClosingEventArgs e)
@@ -146,12 +144,6 @@ namespace QualityImageCapture
                     {
                         currentFrame.Save(destinationFilePath, System.Drawing.Imaging.ImageFormat.Jpeg);
 
-                        ////detener la cámara web
-                        //if (videoSource != null && videoSource.IsRunning)
-                        //{
-                        //    videoSource.SignalToStop();
-                        //    videoSource.WaitForStop();
-                        //}
 
                         Message message = new Message("Foto guardada con éxito");
                         message.ShowDialog();
@@ -159,7 +151,6 @@ namespace QualityImageCapture
                         pbImagen.Image = System.Drawing.Image.FromFile(destinationFilePath);
 
                         btnPass.Enabled = true;
-                        //pass();
                     }
                     else
                     {
@@ -329,6 +320,7 @@ namespace QualityImageCapture
 
         private void serialTransaction(string serial, out int response)
         {
+            MessagePass messagePass = null;
 
             InventoryItem[] fetchInv = null;
             string workorder = string.Empty;
@@ -357,6 +349,12 @@ namespace QualityImageCapture
 
                 //Log
                 File.AppendAllText(Directory.GetCurrentDirectory() + @"\errorLog.txt", DateTime.Now.ToString("dd-MM-yyyy HH:mm:ss") + ",Error al consultar el status del serial " + serial + ":" + ex.Message + "\n");
+
+                if (videoSource != null && videoSource.IsRunning)
+                {
+                    videoSource.SignalToStop();
+                    videoSource.WaitForStop();
+                }
 
                 //Response
                 response = -1;
@@ -389,7 +387,8 @@ namespace QualityImageCapture
                     if (!msg.Contains("ADVANCE"))
                     {
                         //Feedback
-                        MostrarMensajeFlotanteNoPass("Pase no otorgado al serial " + serial);
+                        messagePass = new MessagePass("Pase no otorgado al serial " + serial, Color.Red);
+                        messagePass.Show();
 
                         //Log
                         File.AppendAllText(Directory.GetCurrentDirectory() + @"\errorLog.txt", DateTime.Now.ToString("dd-MM-yyyy HH:mm:ss") + ",Pase NO otorgado al serial " + serial + ":" + msg + "\n");
@@ -400,8 +399,16 @@ namespace QualityImageCapture
                         return;
                     }
 
-                    //Feedback
-                    MostrarMensajeFlotante("Serial " + serial + " Completado");
+                    ////Feedback
+                    messagePass = new MessagePass("Serial " + serial + " Completado", Color.Green);
+                    messagePass.ShowDialog();
+
+                    //detener la cámara web
+                    if (videoSource != null && videoSource.IsRunning)
+                    { 
+                        videoSource.SignalToStop();
+                        videoSource.WaitForStop();
+                    }
 
                     //Log
                     File.AppendAllText(Directory.GetCurrentDirectory() + @"\Log.txt", DateTime.Now.ToString("dd-MM-yyyy HH:mm:ss") + "," + msg + "\n");
@@ -416,6 +423,12 @@ namespace QualityImageCapture
                     File.AppendAllText(Directory.GetCurrentDirectory() + @"\errorLog.txt", DateTime.Now.ToString("dd-MM-yyyy HH:mm:ss") + ",Error al dar el pase al serial " + serial + ":" + ex.Message + "\n");
                     //Response
                     response = -1;
+
+                    if (videoSource != null && videoSource.IsRunning)
+                    {
+                        videoSource.SignalToStop();
+                        videoSource.WaitForStop();
+                    }
                     return;
                 }
             }
@@ -425,84 +438,18 @@ namespace QualityImageCapture
                 var getInstructions = servicio.getWorkOrderStepInstructions(workorder, step.ToString(), out error, out msg);
 
                 //Feedback
-
-                MostrarMensajeFlotanteNoPass("Serial " + serial + " sin flujo, " + status + ":" + getInstructions.opdesc);
+                messagePass = new MessagePass("Serial " + serial + " sin flujo, " + status + ":" + getInstructions.opdesc, Color.Red);
+                messagePass.Show();
 
                 //Response
                 response = -1;
+
+                if (videoSource != null && videoSource.IsRunning)
+                {
+                    videoSource.SignalToStop();
+                    videoSource.WaitForStop();
+                }
             }
-        }
-
-        private void MostrarMensajeFlotante(string mensaje)
-        {
-            // Crear un formulario emergente flotante
-            Form flotanteForm = new Form();
-            flotanteForm.FormBorderStyle = FormBorderStyle.None;  // Sin bordes
-            flotanteForm.StartPosition = FormStartPosition.CenterScreen;  // Centrado en la pantalla
-            flotanteForm.BackColor = Color.Green;  // Fondo verde (puedes cambiar el color)
-            flotanteForm.Opacity = 0.9;  // Opacidad para hacerlo semitransparente
-            flotanteForm.TopMost = true;  // Asegura que esté sobre otras ventanas
-            flotanteForm.Width = 600;  // Ancho de la ventana flotante
-            flotanteForm.Height = 200;  // Alto de la ventana flotante
-
-            // Crear un label para mostrar el mensaje
-            Label mensajeLabel = new Label();
-            mensajeLabel.AutoSize = false;
-            mensajeLabel.Size = new Size(flotanteForm.Width, flotanteForm.Height);
-            mensajeLabel.Text = mensaje;
-            mensajeLabel.Font = new Font("Arial", 48, FontStyle.Bold);  // Tamaño grande de la fuente
-            mensajeLabel.ForeColor = Color.White;  // Color de texto blanco
-            mensajeLabel.TextAlign = ContentAlignment.MiddleCenter;  // Centrado en el label
-
-            // Añadir el label al formulario flotante
-            flotanteForm.Controls.Add(mensajeLabel);
-
-            // Mostrar el mensaje durante 3 segundos y luego cerrar
-            flotanteForm.Show();
-            Timer timer = new Timer();
-            timer.Interval = 3000;  // 3000 milisegundos = 3 segundos
-            timer.Tick += (sender, e) =>
-            {
-                flotanteForm.Close();
-                timer.Stop();
-            };
-            timer.Start();
-        }
-
-        private void MostrarMensajeFlotanteNoPass(string mensaje)
-        {
-            // Crear un formulario emergente flotante
-            Form flotanteForm = new Form();
-            flotanteForm.FormBorderStyle = FormBorderStyle.None;  // Sin bordes
-            flotanteForm.StartPosition = FormStartPosition.CenterScreen;  // Centrado en la pantalla
-            flotanteForm.BackColor = Color.Red;  // Fondo verde (puedes cambiar el color)
-            flotanteForm.Opacity = 0.9;  // Opacidad para hacerlo semitransparente
-            flotanteForm.TopMost = true;  // Asegura que esté sobre otras ventanas
-            flotanteForm.Width = 600;  // Ancho de la ventana flotante
-            flotanteForm.Height = 200;  // Alto de la ventana flotante
-
-            // Crear un label para mostrar el mensaje
-            Label mensajeLabel = new Label();
-            mensajeLabel.AutoSize = false;
-            mensajeLabel.Size = new Size(flotanteForm.Width, flotanteForm.Height);
-            mensajeLabel.Text = mensaje;
-            mensajeLabel.Font = new Font("Arial", 48, FontStyle.Bold);  // Tamaño grande de la fuente
-            mensajeLabel.ForeColor = Color.White;  // Color de texto blanco
-            mensajeLabel.TextAlign = ContentAlignment.MiddleCenter;  // Centrado en el label
-
-            // Añadir el label al formulario flotante
-            flotanteForm.Controls.Add(mensajeLabel);
-
-            // Mostrar el mensaje durante 3 segundos y luego cerrar
-            flotanteForm.Show();
-            Timer timer = new Timer();
-            timer.Interval = 3000;  // 3000 milisegundos = 3 segundos
-            timer.Tick += (sender, e) =>
-            {
-                flotanteForm.Close();
-                timer.Stop();
-            };
-            timer.Start();
         }
 
         private void FrmMain_FormClosed(object sender, FormClosedEventArgs e)
